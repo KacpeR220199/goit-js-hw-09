@@ -6,13 +6,13 @@ form.addEventListener('submit', e => {
   const stepInput = Number(e.target.elements[1].value);
   const amountInput = Number(e.target.elements[2].value);
 
-  for (i = 0; i < amountInput; i += 1) {
+  for (let i = 0; i < amountInput; i += 1) {
     createPromise(i, delayInput + i * stepInput)
       .then(({ position, delay }) => {
-        console.log(`✅Fulfilled promise ${position} in ${delay}ms`);
+        console.log(`✅Fulfilled promise ${position} in ${delay} ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`🛑Rejected promise ${position} in ${delay}ms`);
+        console.log(`🛑Rejected promise ${position} in ${delay} ms`);
       });
   }
 });
@@ -23,7 +23,8 @@ function createPromise(position, delay) {
       if (shouldResolve) {
         resolve({ position, delay });
       } else {
-        reject('error');
+        // reject('error');
+        reject({ position, delay });
       }
     }, delay);
   });
