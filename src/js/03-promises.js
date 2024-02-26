@@ -6,7 +6,7 @@ form.addEventListener('submit', e => {
   const stepInput = Number(e.target.elements[1].value);
   const amountInput = Number(e.target.elements[2].value);
 
-  for (i = 0; i < amountInput; i++) {
+  for (i = 0; i < amountInput; i += 1) {
     createPromise(i, delayInput + i * stepInput)
       .then(({ position, delay }) => {
         console.log(`✅Fulfilled promise ${position} in ${delay}ms`);
